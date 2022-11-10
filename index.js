@@ -50,9 +50,13 @@ function init() {
             init();
           }
         )
-        //func to add a department
+    //func to add a department
       } else if (answers.selectChoices == 'add a department') {
         addDept()
+
+    //func to add a role
+      } else if (answers.selectChoices == 'add a role') {
+        addRole()
       }
     })
     .catch((error) => {
@@ -82,7 +86,38 @@ function addDept() {
             }
           )
     })
-  }
+  };
+
+  //function to add a new role and prompts
+function addRole() {
+    inquirer.prompt({
+        message: "What's the new role?",
+        type: 'input',
+        name: 'newRole',
+    },
+    {
+        message: "What's the new role's salary?",
+        type: 'input',
+        name: 'newSalary',
+    },
+    {
+        message: "What's the new role's department ID?",
+        type: 'input',
+        name: 'newDeptID',
+    },
+    ) .then(answers => {
+        console.log(answers)
+        connection.query(
+            'INSERT INTO role(name) VALUES (?,?,?)',
+            //is this syntax right?
+            [answers.newRole],[answers.newSalary],[answers.newDeptID],
+            function (err, results, fields) {
+              console.table(results);
+              init();
+            }
+          )
+    })
+  };
 
 // function writeToFile(fileName, data) {
 //   fs.writeFile(fileName, data, (err) => console.log(err))
