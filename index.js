@@ -74,6 +74,8 @@ function init() {
             }
         }); //do I need this semicolon??
 }
+
+
 //create prompt for when you add a department
 function addDept() {
     inquirer.prompt({
