@@ -8,7 +8,7 @@ VALUES ("Finance"),
 INSERT INTO role (title, salary, department_id)
 VALUES ("Loan Officer", 50000, 1),
         ("Manager", 70000, 2),
-        ("Employee", 24000, 1);
+        ("Greeter", 24000, 1);
 
 
 --seeds for employee table in schema--
