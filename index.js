@@ -50,7 +50,10 @@ function init() {
             init();
           }
         )
-      };
+        //func to add a department
+      } else if (answers.selectChoices == 'add a department') {
+        addDept()
+      }
     })
     .catch((error) => {
         console.log(error)
@@ -60,11 +63,29 @@ function init() {
         console.log(["Something else went wrong"]);
       }
     });
-}
+}; //do I need this semicolon??
 
+//create prompt for when you add a department
+function addDept() {
+    inquirer.prompt({
+        message: "What's the new department?",
+        type: 'input',
+        name: 'newDept',
+    }) .then(answers => {
+        console.log(answers)
+        connection.query(
+            'INSERT INTO department(name) VALUES (?)',
+            [answers.newDept],
+            function (err, results, fields) {
+              console.table(results);
+              init();
+            }
+          )
+    })
+  }
 
-function writeToFile(fileName, data) {
-  fs.writeFile(fileName, data, (err) => console.log(err))
-};
+// function writeToFile(fileName, data) {
+//   fs.writeFile(fileName, data, (err) => console.log(err))
+// };
 
 init();
