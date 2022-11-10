@@ -9,6 +9,7 @@ CREATE TABLE department (
     name VARCHAR(30) NOT NULL
 );
 
+--create role table--
 CREATE TABLE role (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30),
@@ -19,6 +20,7 @@ CREATE TABLE role (
     ON DELETE SET NULL
     );
 
+--create employee table--
     CREATE TABLE employee (
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(30),
